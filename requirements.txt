@@ -9,3 +9,6 @@ whisper
 torch
 torchaudio
 ffmpeg-python
+requests
+python-multipart
+moviepy
