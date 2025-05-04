@@ -1,0 +1,171 @@
+/* style.css - GENUP2050 v2.0 */
+
+/* Variables thématiques */
+:root {
+  --primary-blue: #002c5f;
+  --secondary-orange: #f47c20;
+  --success-green: #50BFA5;
+  --neutral-light: #f8f9fa;
+  --text-dark: #2F4F4F;
+  --error-red: #e74c3c;
+}
+
+/* Reset Streamlit par défaut */
+div.stApp {
+  background: var(--neutral-light);
+  color: var(--text-dark);
+  line-height: 1.6;
+}
+
+/* En-tête et logo */
+header[data-testid="stHeader"] {
+  background: var(--primary-blue);
+  padding: 1rem 0;
+}
+
+.stImage img {
+  margin: 0 auto;
+  transition: transform 0.3s ease;
+}
+
+.stImage img:hover {
+  transform: scale(1.03);
+}
+
+/* Zone de téléversement */
+div[data-testid="stFileUploader"] {
+  border: 2px dashed var(--primary-blue) !important;
+  background: rgba(0, 44, 95, 0.05) !important;
+}
+
+div.uploadedFile {
+  background: var(--success-green) !important;
+  color: white !important;
+  border-radius: 8px !important;
+}
+
+/* Onglets */
+div[role="tablist"] button {
+  color: var(--text-dark) !important;
+  font-weight: 500 !important;
+  transition: all 0.3s ease !important;
+}
+
+div[role="tablist"] button:hover {
+  background: rgba(244, 124, 32, 0.1) !important;
+}
+
+div[role="tablist"] button[aria-selected="true"] {
+  color: var(--secondary-orange) !important;
+  border-bottom: 3px solid var(--secondary-orange) !important;
+}
+
+/* Barre de progression */
+div[role="progressbar"] > div {
+  background: var(--secondary-orange) !important;
+}
+
+div[data-testid="stStatus"] > div {
+  border-left: 4px solid var(--primary-blue);
+  background: rgba(0, 44, 95, 0.05);
+}
+
+/* Feedback et zones de texte */
+div[data-testid="stExpander"] details {
+  border: 1px solid rgba(0, 44, 95, 0.1) !important;
+  border-radius: 10px !important;
+}
+
+div.stTextArea textarea {
+  border: 1px solid var(--primary-blue) !important;
+  border-radius: 8px !important;
+  padding: 1rem !important;
+}
+
+/* Boutons principaux */
+div.stButton > button {
+  background: var(--primary-blue) !important;
+  color: white !important;
+  border-radius: 25px !important;
+  padding: 0.75rem 2rem !important;
+  transition: all 0.3s ease !important;
+}
+
+div.stButton > button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 44, 95, 0.2);
+}
+
+/* Boutons secondaires */
+div.stDownloadButton > button {
+  background: var(--success-green) !important;
+  border: 2px solid var(--success-green) !important;
+}
+
+/* Messages d'erreur */
+div[data-testid="stNotification"] > div {
+  background: var(--error-red) !important;
+  color: white !important;
+  border-radius: 10px !important;
+}
+
+/* Conseils DISC */
+div.disc-tip {
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin: 1rem 0;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+div.disc-tip h4 {
+  margin-top: 0;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid;
+}
+
+div.disc-tip.D { border-color: var(--primary-blue); }
+div.disc-tip.I { border-color: var(--secondary-orange); }
+div.disc-tip.S { border-color: var(--success-green); }
+div.disc-tip.C { border-color: var(--text-dark); }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .stImage img {
+    width: 180px !important;
+  }
+  
+  div[role="tablist"] {
+    flex-direction: column !important;
+  }
+  
+  div[role="tablist"] button {
+    width: 100% !important;
+    margin: 5px 0 !important;
+  }
+}
+
+/* Animations */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.stSuccess > div {
+  animation: pulse 1.5s ease-in-out;
+}
+
+/* PDF Preview */
+div.pdf-preview {
+  border: 2px solid var(--primary-blue);
+  border-radius: 12px;
+  padding: 1rem;
+  background: white;
+  margin: 1rem 0;
+}
+
+/* Éléments cachés */
+div.stHidden {
+  display: none !important;
+}
