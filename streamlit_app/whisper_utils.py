@@ -43,7 +43,7 @@ class AudioTranscriber:
                     file=audio_file,
                     response_format="text",
                     language=language,
-                    prompt=promchill
+                    prompt=prompt  # CORRECTION ICI (promchill → prompt)
                 ).text
 
         except openai.APIConnectionError as e:
