@@ -9,42 +9,19 @@ from PIL import Image
 from whisper_utils import transcribe_audio
 from streamlit_extras.stylable_container import stylable_container
 
-# Configuration CSS sécurisée
-def load_custom_css():
-    """Charge le CSS personnalisé avec fallback"""
-    try:
-        with open("style.css", "r", encoding="utf-8") as f:
-            st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
-    except FileNotFoundError:
-        st.markdown("""
-        <style>
-            :root {
-                --primary-blue: #002c5f;
-                --secondary-orange: #f47c20;
-                --success-green: #50BFA5;
-                --neutral-light: #f8f9fa;
-                --text-dark: #2F4F4F;
-                --error-red: #e74c3c;
-            }
-            body { font-family: Arial, sans-serif; }
-            .stButton>button { 
-                background: var(--primary-blue)!important; 
-                color: white!important;
-                border-radius: 8px;
-            }
-            div[data-testid="stFileUploader"] {
-                border: 2px dashed var(--primary-blue)!important;
-                border-radius: 12px;
-            }
-        </style>
-        """, unsafe_allow_html=True)
-        st.warning("Style personnalisé non trouvé - Mode minimal activé")
+import streamlit as st
+import tempfile
+import openai
+import os
+import time
+from datetime import datetime
+from fpdf import FPDF
+from PIL import Image
+from whisper_utils import transcribe_audio
+from streamlit_extras.stylable_container import stylable_container
 
-load_custom_css()
-
-# Initialisation de l'application
+# INITIALISATION DE L'APP EN PREMIER
 def init_app():
-    """Configure l'application et charge le logo"""
     st.set_page_config(
         page_title="GENUP2050 - Coach Pitch & DISC",
         page_icon="🚀",
@@ -58,7 +35,22 @@ def init_app():
         st.title("GENUP2050 - Coach Pitch")
         st.warning("Logo non trouvé")
 
-init_app()
+init_app()  # <-- Doit être appelé immédiatement après les imports
+
+# Configuration CSS APRÈS l'initialisation
+def load_custom_css():
+    try:
+        with open("style.css", "r", encoding="utf-8") as f:
+            st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+    except FileNotFoundError:
+        st.markdown("""
+        <style>
+            /* ... votre CSS de secours ... */
+        </style>
+        """, unsafe_allow_html=True)
+        st.warning("Style personnalisé non trouvé - Mode minimal activé")
+
+load_custom_css()
 
 # Classe PDF sécurisée
 class CustomPDF(FPDF):
