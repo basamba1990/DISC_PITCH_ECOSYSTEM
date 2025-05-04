@@ -43,7 +43,7 @@ with st.expander("📘 Bienvenue sur Coach Pitch & DISC - Clique ici pour commen
     ---
     ### Vidéo Démo :
     """)
-    st.video("https://www.youtube.com/watch?v=2GvS2LzYV98")
+    st.video("https://www.smooovebox.com/vf/87187b4f68f27b47a8391227df36d06dd0ac53c9")
     
     st.markdown("""
     ---
