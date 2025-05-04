@@ -8,4 +8,4 @@ tqdm
 whisper
 torch
 torchaudio
-ffmpeg
+ffmpeg-python
